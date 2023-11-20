@@ -91,3 +91,6 @@ packages:
 services:
   - 'bluetooth'
   - 'NetworkManager'
+
+user-services:
+  - 'blend-files'
