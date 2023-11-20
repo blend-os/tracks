@@ -87,7 +87,7 @@ packages:
   - 'xfsprogs'
   - 'xl2tpd'
   - 'bluez'
-  - 'network-manager'
+  - 'networkmanager'
 
 services:
   - 'bluetooth'
