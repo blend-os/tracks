@@ -11,3 +11,6 @@ packages:
   - 'gnome-terminal'
   - 'lightdm'
   - 'lightdm-gtk-greeter'
+
+services:
+  - 'lightdm'

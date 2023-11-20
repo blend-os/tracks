@@ -6,3 +6,6 @@ packages:
   - 'xfce4'
   - 'lightdm'
   - 'lightdm-gtk-greeter'
+
+services:
+  - 'lightdm'

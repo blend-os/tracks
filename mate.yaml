@@ -7,3 +7,6 @@ packages:
   - 'mate-extra'
   - 'lightdm'
   - 'lightdm-gtk-greeter'
+
+services:
+  - 'lightdm'

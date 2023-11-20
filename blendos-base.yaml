@@ -88,8 +88,10 @@ packages:
   - 'xl2tpd'
   - 'bluez'
   - 'networkmanager'
+  - 'cups'
 
 services:
+  - 'cups'
   - 'bluetooth'
   - 'NetworkManager'
 

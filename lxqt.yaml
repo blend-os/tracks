@@ -5,3 +5,6 @@ track: 'blendos-base'
 packages:
   - 'lxqt'
   - 'sddm'
+
+services:
+  - 'sddm'

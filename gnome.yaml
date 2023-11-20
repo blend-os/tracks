@@ -4,9 +4,13 @@ track: 'blendos-base'
 
 packages:
   - 'adw-gtk3'
+  - 'gdm'
   - 'gnome'
   - 'gnome-shell-extension-blur-my-shell'
   - 'gnome-shell-extension-appindicator'
   - 'gnome-software'
   - 'waydroid'
   - 'waydroid-image'
+
+services:
+  - 'gdm'

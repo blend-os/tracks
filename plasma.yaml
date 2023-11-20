@@ -7,5 +7,9 @@ packages:
   - 'kde-utilities-meta'
   - 'plasma'
   - 'plasma-wayland-session'
+  - 'sddm'
   - 'waydroid'
   - 'waydroid-image'
+
+services:
+  - 'sddm'
