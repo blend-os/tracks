@@ -10,6 +10,7 @@ packages:
   - 'bash-completion'
   - 'bind'
   - 'blend'
+  - 'blend-settings'
   - 'brltty'
   - 'broadcom-wl-dkms'
   - 'btrfs-progs'

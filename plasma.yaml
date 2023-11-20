@@ -3,7 +3,9 @@ impl: 'https://github.com/blend-os/tracks/raw/main'
 track: 'blendos-base'
 
 packages:
+  - 'kde-system-meta'
+  - 'kde-utilities-meta'
   - 'plasma'
   - 'plasma-wayland-session'
-  - 'kde-utilities-meta'
-  - 'kde-system-meta'
+  - 'waydroid'
+  - 'waydroid-image'
