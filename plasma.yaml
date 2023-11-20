@@ -1,0 +1,9 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'blendos-base'
+
+packages:
+  - 'plasma'
+  - 'plasma-wayland-session'
+  - 'kde-utilities-meta'
+  - 'kde-system-meta'

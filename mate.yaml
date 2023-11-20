@@ -1,0 +1,9 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'blendos-base'
+
+packages:
+  - 'mate'
+  - 'mate-extra'
+  - 'lightdm'
+  - 'lightdm-gtk-greeter'

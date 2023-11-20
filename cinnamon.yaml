@@ -1,0 +1,13 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'blendos-base'
+
+packages:
+  - 'cinnamon'
+  - 'xed'
+  - 'evince'
+  - 'totem'
+  - 'blueberry'
+  - 'gnome-terminal'
+  - 'lightdm'
+  - 'lightdm-gtk-greeter'

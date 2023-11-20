@@ -1,0 +1,10 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'blendos-base'
+
+packages:
+  - 'gnome'
+  - 'adw-gtk3'
+  - 'gnome-software'
+  - 'gnome-shell-extension-blur-my-shell'
+  - 'gnome-shell-extension-appindicator'
