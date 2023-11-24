@@ -13,3 +13,6 @@ packages:
 
 services:
   - 'sddm'
+
+commands:
+  - 'rm -f /usr/share/applications/Waydroid.desktop'

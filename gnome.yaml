@@ -68,3 +68,6 @@ packages:
 
 services:
   - 'gdm'
+
+commands:
+  - 'rm -f /usr/share/applications/Waydroid.desktop'
