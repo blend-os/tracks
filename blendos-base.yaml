@@ -89,6 +89,7 @@ packages:
   - 'bluez'
   - 'networkmanager'
   - 'cups'
+  - 'ttf-jetbrains-mono'
 
 services:
   - 'cups'
