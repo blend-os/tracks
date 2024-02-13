@@ -1,0 +1,20 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'gnome'
+
+packages:
+  - 'firefox'
+  - 'fprintd'
+
+services:
+  - 'fprintd'
+
+commands:
+  - 'find /usr/share/metainfo ! -name "org.freedesktop.MalcontentControl.appdata.xml" ! -name "org.freedesktop.appstream.cli.metainfo.xml" ! -name "org.freedesktop.appstream.compose.metainfo.xml" ! -name "org.gnome.Software.Plugin.Flatpak.metainfo.xml" ! -name "org.gnome.Software.Plugin.Fwupd.metainfo.xml"  -type f -exec rm -f {} +'
+  - 'rm -f /usr/share/applications/stoken-gui.desktop'
+  - 'rm -f /usr/share/applications/stoken-gui-small.desktop'
+  - 'rm -f /usr/share/applications/qvidcap.desktop'
+  - 'rm -f /usr/share/applications/qv4l2.desktop'
+  - 'rm -f /usr/share/applications/bvnc.desktop'
+  - 'rm -f /usr/share/applications/avahi-discover.desktop'
+  - 'rm -f /usr/share/applications/bssh.desktop'
