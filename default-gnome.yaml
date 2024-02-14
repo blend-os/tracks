@@ -3,6 +3,7 @@ impl: 'https://github.com/blend-os/tracks/raw/main'
 track: 'gnome'
 
 packages:
+  - 'gnome-initial-setup'
   - 'firefox'
   - 'fprintd'
 
