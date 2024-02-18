@@ -53,7 +53,6 @@ packages:
   - 'nano'
   - 'nbd'
   - 'ndisc6'
-  - 'neovim'
   - 'nfs-utils'
   - 'nilfs-utils'
   - 'ntfs-3g'
