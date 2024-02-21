@@ -5,6 +5,7 @@ track: 'blendos-base'
 packages:
   - 'adw-gtk3'
   - 'baobab'
+  - 'blendos-wallpapers-git'
   - 'epiphany'
   - 'evince'
   - 'gdm'
