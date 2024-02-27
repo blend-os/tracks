@@ -3,6 +3,9 @@ impl: 'https://github.com/blend-os/tracks/raw/main'
 track: 'gnome'
 
 packages:
+  - 'gnome-shell-extension-dash-to-dock'
+  - 'gnome-shell-extension-blur-my-shell'
+  - 'gnome-shell-extension-appindicator'
   - 'gnome-initial-setup'
   - 'filesystem-blend'
   - 'plymouth-blend'
