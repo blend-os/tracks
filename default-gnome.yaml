@@ -5,6 +5,7 @@ track: 'gnome'
 packages:
   - 'gnome-initial-setup'
   - 'filesystem-blend'
+  - 'plymouth-blend'
   - 'blend-web-store'
   - 'chromium'
   - 'fprintd'
