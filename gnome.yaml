@@ -6,7 +6,6 @@ packages:
   - 'adw-gtk3'
   - 'baobab'
   - 'blendos-wallpapers-git'
-  - 'epiphany'
   - 'evince'
   - 'gdm'
   - 'gnome-backgrounds'
