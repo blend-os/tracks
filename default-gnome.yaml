@@ -6,6 +6,7 @@ packages:
   - 'gnome-initial-setup'
   - 'filesystem-blend'
   - 'blend-web-store'
+  - 'zram-generator'
   - 'chromium'
   - 'fprintd'
 
