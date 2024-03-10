@@ -10,7 +10,7 @@ packages:
   - 'filesystem-blend'
   - 'plymouth-blend'
   - 'blend-web-store'
-  - 'chromium'
+  - 'firefox'
   - 'fprintd'
 
 services:
