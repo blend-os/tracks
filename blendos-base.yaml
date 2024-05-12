@@ -6,6 +6,8 @@ packages:
   - 'arch-install-scripts'
   - 'b43-fwcutter'
   - 'archlinux-keyring'
+  - 'base-devel'
+  - 'git'
   - 'bash'
   - 'bzip2'
   - 'coreutils'
