@@ -18,7 +18,6 @@ services:
 
 commands:
   - 'find /usr/share/metainfo ! -name "org.freedesktop.appstream.cli.metainfo.xml" ! -name "org.freedesktop.appstream.compose.metainfo.xml" ! -name "org.gnome.Software.Plugin.Flatpak.metainfo.xml" ! -name "org.gnome.Software.Plugin.Fwupd.metainfo.xml"  -type f -exec rm -f {} +'
-  - 'mv /usr/share/applications/org.gnome.Software.desktop /usr/share/applications/org.gnome.Software.hidemenuitem.desktop'
   - 'rm -f /usr/share/applications/stoken-gui.desktop'
   - 'rm -f /usr/share/applications/stoken-gui-small.desktop'
   - 'rm -f /usr/share/applications/qvidcap.desktop'
