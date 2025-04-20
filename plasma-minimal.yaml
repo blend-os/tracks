@@ -3,6 +3,7 @@ impl: 'https://github.com/blend-os/tracks/raw/main'
 track: 'blendos-base'
 
 packages:
+  - ark
   - bluedevil
   - breeze-gtk
   - discover
