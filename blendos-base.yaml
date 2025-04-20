@@ -117,6 +117,7 @@ packages:
   - 'networkmanager'
   - 'cups'
   - 'ttf-jetbrains-mono'
+  - 'lvm2'
 
 services:
   - 'cups'
