@@ -12,6 +12,8 @@ packages:
   - kgamma
   - kinfocenter
   - krdp
+  - konsole
+  - kate
   - kscreen
   - ksshaskpass
   - kwallet-pam
