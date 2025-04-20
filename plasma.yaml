@@ -16,3 +16,6 @@ services:
 
 commands:
   - 'rm -f /usr/share/applications/Waydroid.desktop'
+  - 'mkdir -p "/usr/local/share/sddm"'
+  - 'mv /usr/share/sddm/themes /usr/local/share/sddm/'
+  - 'ln -s /usr/local/share/sddm/themes /usr/share/sddm/themes'
