@@ -12,6 +12,7 @@ packages:
   - 'kde-gtk-config'
   - 'kde-system-meta'
   - 'kdeplasma-addons'
+  - 'kdialog'
   - 'kgamma'
   - 'kinfocenter'
   - 'krdp'
