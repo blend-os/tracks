@@ -9,6 +9,7 @@ packages:
   - discover
   - dolphin
   - drkonqi
+  - gwenview
   - kde-gtk-config
   - kdeplasma-addons
   - kgamma
@@ -21,6 +22,7 @@ packages:
   - kwallet-pam
   - kwrited
   - ocean-sound-theme
+  - okular
   - oxygen
   - oxygen-sounds
   - plasma-browser-integration
