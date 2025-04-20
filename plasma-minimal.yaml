@@ -6,6 +6,7 @@ packages:
   - bluedevil
   - breeze-gtk
   - discover
+  - dolphin
   - drkonqi
   - kde-gtk-config
   - kdeplasma-addons
