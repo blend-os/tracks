@@ -3,7 +3,6 @@ impl: 'https://github.com/blend-os/tracks/raw/main'
 track: 'blendos-base'
 
 packages:
-  - 'adw-gtk3'
   - 'baobab'
   - 'blendos-wallpapers-git'
   - 'evince'
