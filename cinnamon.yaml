@@ -4,7 +4,6 @@ track: 'blendos-base'
 
 packages:
   - 'cinnamon'
-  - 'arc-gtk-theme'
   - 'papirus-icon-theme'
   - 'xed'
   - 'evince'
