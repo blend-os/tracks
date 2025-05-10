@@ -8,7 +8,6 @@ packages:
   - 'cosmic-bg'
   - 'cosmic-comp'
   - 'cosmic-files'
-  - 'cosmic-greeter'
   - 'cosmic-idle'
   - 'cosmic-launcher'
   - 'cosmic-notifications'
@@ -25,6 +24,7 @@ packages:
   - 'cosmic-wallpapers'
   - 'cosmic-workspaces'
   - 'xdg-desktop-portal-cosmic'
+  - 'gdm'
 
 services:
-  - 'cosmic-greeter'
+  - 'gdm'
