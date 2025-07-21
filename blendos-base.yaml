@@ -68,6 +68,7 @@ packages:
   - 'linux-atm'
   - 'linux-firmware'
   - 'linux-firmware-marvell'
+  - 'fwupd'
   - 'man-db'
   - 'man-pages'
   - 'mc'
