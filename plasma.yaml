@@ -16,3 +16,5 @@ services:
 
 commands:
   - 'rm -f /usr/share/applications/Waydroid.desktop'
+  - 'useradd -m sddm -s /bin/false'
+  - 'usermod -aG video sddm'
