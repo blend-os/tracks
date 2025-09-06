@@ -6,6 +6,7 @@
 * LXQT: `lxqt`
 * MATE: `mate`
 * XFCE: `xfce`
+* Cosmic: `cosmic`
 
 ## Example GNOME `/system.yaml` (vanilla)
 
