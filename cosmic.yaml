@@ -4,6 +4,7 @@ track: 'blendos-base'
 
 packages:
   - 'cosmic-player'
+  - 'firefox'
   - 'cosmic-session'
   - 'cosmic-store'
   - 'cosmic-terminal'
