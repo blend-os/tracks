@@ -4,6 +4,7 @@ track: 'blendos-base'
 
 packages:
   - 'lxqt'
+  - 'firefox'
   - 'sddm'
 
 services:
