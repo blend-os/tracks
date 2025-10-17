@@ -69,6 +69,7 @@ packages:
   - 'linux-atm'
   - 'linux-firmware'
   - 'linux-firmware-marvell'
+  - 'power-profiles-daemon'
   - 'fwupd'
   - 'man-db'
   - 'man-pages'
