@@ -5,6 +5,7 @@ track: 'blendos-base'
 packages:
   - 'mate'
   - 'mate-extra'
+  - 'firefox'
   - 'lightdm'
   - 'lightdm-gtk-greeter'
 
