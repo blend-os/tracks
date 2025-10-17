@@ -125,6 +125,7 @@ services:
   - 'cups'
   - 'bluetooth'
   - 'NetworkManager'
+  - 'power-profiles-daemon'
 
 user-services:
   - 'blend-files'
