@@ -3,6 +3,7 @@
 * GNOME: `gnome`
 * Plasma: `plasma`
 * Cinnamon: `cinnamon`
+* COSMIC: `cosmic`
 * LXQT: `lxqt`
 * MATE: `mate`
 * XFCE: `xfce`
