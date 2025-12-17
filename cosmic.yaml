@@ -1,0 +1,17 @@
+impl: 'https://github.com/blend-os/tracks/raw/main'
+
+track: 'blendos-base'
+
+packages:
+  - 'cosmic-player'
+  - 'firefox'
+  - 'cosmic-session'
+  - 'cosmic-store'
+  - 'cosmic-terminal'
+  - 'cosmic-text-editor'
+  - 'cosmic-wallpapers'
+  - 'xdg-desktop-portal-cosmic'
+  - 'waydroid'
+  - 'waydroid-image'
+services:
+  - 'cosmic-greeter'
