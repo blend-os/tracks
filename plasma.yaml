@@ -5,6 +5,7 @@ track: 'blendos-base'
 packages:
   - 'kde-system-meta'
   - 'kde-utilities-meta'
+  - 'kdeconnect'
   - 'plasma'
   - 'plasma-workspace'
   - 'sddm'
