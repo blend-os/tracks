@@ -9,7 +9,7 @@ packages:
   - 'xed'
   - 'evince'
   - 'totem'
-  - 'blueberry'
+  - 'blueman'
   - 'gnome-terminal'
   - 'lightdm'
   - 'lightdm-gtk-greeter'
