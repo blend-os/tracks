@@ -8,6 +8,7 @@ packages:
   - 'evince'
   - 'gdm'
   - 'gnome-backgrounds'
+  - 'wl-clipboard'
   - 'gnome-calculator'
   - 'gnome-calendar'
   - 'gnome-characters'

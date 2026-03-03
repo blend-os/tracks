@@ -12,6 +12,7 @@ packages:
   - 'firefox'
   - 'waydroid'
   - 'waydroid-image'
+  - 'wl-clipboard'
 
 services:
   - 'sddm'

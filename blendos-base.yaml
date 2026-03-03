@@ -97,7 +97,6 @@ packages:
   - 'python-pyclip'
   - 'xclip'
   - 'xsel'
-  - 'wl-clipboard'
   - 'os-prober'
   - 'parted'
   - 'partimage'
