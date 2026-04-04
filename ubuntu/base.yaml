@@ -59,4 +59,4 @@ override:
 env:
   BASE_IMAGE_NAME: docker://ghcr.io/rudraswat/ubuntu-rolling-nogui:main
   BASE_AKSHARA_REPO: "https://git.blendos.co/blendOS/system-tools/akshara"
-  BASE_AKSHARA_REPO_COMMIT: "13e363a9e91de225705e30b46816703429dcb4dc"
+  BASE_AKSHARA_REPO_COMMIT: "71c09c35706983e03dd218f35be916ae7509af4e"
