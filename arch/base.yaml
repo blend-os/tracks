@@ -1,0 +1,197 @@
+track: "base"
+
+modules:
+  - name: exec
+    run: |
+      for cmd in "$@"; do
+        bash -s <<< "$cmd"
+      done
+
+  - name: pacman-install
+    run: |
+      pacman -Syqu --noconfirm "$@" || pacman -Syqu --noconfirm "$@"
+
+  - name: pacman-remove
+    run: |
+      pacman -Rcns --noconfirm "$@"
+
+  - name: systemctl-enable
+    run: |
+      systemctl enable "$@"
+
+  - name: systemctl-user-enable
+    run: |
+      systemctl --global enable "$@"
+
+stages:
+  - module: pacman-install
+    inputs:
+      - "jq"
+      - "git"
+      - "sudo"
+      - "grub"
+      - "nano"
+      - "dracut"
+      - "efibootmgr"
+      - "skopeo"
+      - "umoci"
+      - "flatpak"
+      - "fakeroot"
+      - "pacman-contrib"
+      - "networkmanager"
+      - "python"
+      - "python-yaml"
+      - "python-click"
+      - "python-requests"
+      - "python-fasteners"
+
+  - module: exec
+    inputs:
+      - |
+        if [[ "$BASE_KERNEL" != none ]]; then
+          pacman -Syqu --noconfirm "$BASE_KERNEL" "$BASE_KERNEL"-headers linux-firmware
+        fi
+
+        if [[ "$BASE_EXTRAS" == desktop ]]; then
+          pacman -Syqu --noconfirm cups bluez
+          systemctl enable --now cups bluetooth
+        fi
+
+        if [[ "$BASE_USE_IWD" == y ]]; then
+          pacman -Syqu --noconfirm iwd
+          mkdir -p /etc/NetworkManager/conf.d
+          cat <<'EOF' >/etc/NetworkManager/conf.d/wifi_backend.conf
+        [device]
+        wifi.backend=iwd
+        EOF
+        fi
+
+        if [[ "$BASE_NVIDIA" == 'nvidia-open' ]]; then
+          pacman -Syqu --noconfirm nvidia-open
+        fi
+
+      - |
+        groupadd -r sudo &>/dev/null || :
+        groupadd -r wheel &>/dev/null || :
+        mkdir -p /etc/sudoers.d
+        cat > /etc/sudoers.d/00sudo_wheel <<EOF
+        %sudo     ALL=(ALL) ALL
+        %wheel    ALL=(ALL) ALL
+        EOF
+
+      - |
+        git clone --single-branch --branch "$BASE_AKSHARA_REPO_BRANCH" --revision "$BASE_AKSHARA_REPO_COMMIT" --depth 1 "$BASE_AKSHARA_REPO" /akshara
+        cp -a /akshara/usr/* /usr
+        rm -rf /akshara
+
+  - module: systemctl-enable
+    inputs:
+      - akshara-update-cleanup
+      - NetworkManager
+
+  - module: systemctl-user-enable
+    inputs:
+      - akshara-update-check
+
+post-stages:
+  - module: exec
+    inputs:
+      - locale-gen
+      - |
+        rm -f /boot/* &>/dev/null
+        cd /usr/lib/modules
+        kernels=(*)
+        cp "${kernels[0]}"/vmlinuz /boot/vmlinuz-"${kernels[0]}"
+      - dracut --force --regenerate-all --no-hostonly --verbose
+
+override:
+  - path: /var/lib/pacman
+    keep: new
+    immutable: true
+
+  - path: /etc/pacman.conf
+    keep: new
+    immutable: true
+
+needs-update:
+  - |
+    [ "$(checkupdates | wc -l)" -gt 0 ]
+
+auto-update:
+  enabled: false
+
+distro-config:
+  initialise: |
+    set -e
+
+    mkdir -m 0755 -p ./var/{cache/blendOS/pacman/pkg,lib/pacman,log} ./{dev,run,etc/pacman.d}
+    mkdir -m 1777 -p ./tmp
+    mkdir -m 0555 -p ./{sys,proc}
+
+    cat <<'EOF' >./etc/pacman.conf
+    [options]
+    HoldPkg = pacman glibc
+    Architecture = auto
+    CheckSpace
+    ParallelDownloads = 5
+    CacheDir = /var/cache/blendOS/pacman/pkg/
+    SigLevel = Never
+    LocalFileSigLevel = Never
+    RemoteFileSigLevel = Never
+
+    EOF
+
+    if [[ "$BASE_ARCH_REPO" != default ]]; then
+      cat <<EOF >>./etc/pacman.conf
+    [core]
+    Server = $BASE_ARCH_REPO
+
+    [extra]
+    Server = $BASE_ARCH_REPO
+
+    [multilib]
+    Server = $BASE_ARCH_REPO
+    EOF
+    else
+      cat <<'EOF' >>./etc/pacman.conf
+    [core]
+    Server = https://fastly.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+    Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+
+    [extra]
+    Server = https://fastly.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+    Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+
+    [multilib]
+    Server = https://fastly.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+    Server = https://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+    Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+    EOF
+    fi
+
+    pacman -Sy --config ./etc/pacman.conf --cachedir ./var/cache/blendOS/pacman/pkg -r . --needed --noconfirm base
+
+    ln -sfn usr/lib64 ./lib64
+    ln -sfn usr/sbin ./sbin
+
+    cp /etc/locale.gen ./etc
+    cp /etc/locale.conf ./etc
+
+env:
+  BASE_ARCH_REPO: "default"
+  BASE_KERNEL: "linux"
+  BASE_EXTRAS: "desktop"
+  BASE_USE_IWD: "y"
+  BASE_NVIDIA: "none"
+  BASE_AKSHARA_REPO: "https://git.blendos.co/blendOS/system-tools/akshara"
+  BASE_AKSHARA_REPO_BRANCH: "v5"
+  BASE_AKSHARA_REPO_COMMIT: "ccc81b9a5eeedba72b35c51aed3140f69f821928"
+
+boot:
+  type: uefi
+  loader: grub

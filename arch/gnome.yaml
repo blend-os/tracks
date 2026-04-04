@@ -1,0 +1,10 @@
+track: "https://git.blendos.co/blendOS/tracks/-/raw/v5/arch/base.yaml"
+
+stages:
+  - module: pacman-install
+    inputs:
+      - gnome
+
+  - module: systemctl-enable
+    inputs:
+      - gdm

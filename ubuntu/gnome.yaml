@@ -1,0 +1,4 @@
+track: "https://git.blendos.co/blendOS/tracks/-/raw/v5/ubuntu/base.yaml"
+
+env:
+  BASE_IMAGE_NAME: docker://ghcr.io/rudraswat/ubuntu-rolling-gnome:main

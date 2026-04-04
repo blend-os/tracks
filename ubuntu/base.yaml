@@ -1,0 +1,63 @@
+track: "https://git.blendos.co/blendOS/tracks/-/raw/v5/oci/oci.yaml"
+
+modules:
+  - name: apt-install
+    run: |
+      apt-get update
+      DEBIAN_FRONTEND=noninteractive apt-get install -yq "$@"
+
+  - name: apt-remove
+    run: |
+      DEBIAN_FRONTEND=noninteractive apt-get autoremove --purge -yq "$@"
+
+  - name: systemctl-enable
+    run: |
+      systemctl enable "$@"
+
+  - name: systemctl-user-enable
+    run: |
+      systemctl --global enable "$@"
+
+stages:
+  - module: exec
+    inputs:
+      - |
+        mkdir -p /etc/apt/apt.conf.d /var/cache/blendOS/ubuntu/apt
+        cat >/etc/apt/apt.conf.d/10blendOS.conf <<'EOF'
+        Dir::Cache::Archives /var/cache/blendOS/ubuntu/apt;
+        EOF
+
+  - module: exec
+    inputs:
+      - |
+        git clone --single-branch --branch "$BASE_AKSHARA_REPO_BRANCH" --revision "$BASE_AKSHARA_REPO_COMMIT" --depth 1 "$BASE_AKSHARA_REPO" /akshara
+        cp -a /akshara/usr/* /usr
+        rm -rf /akshara
+
+post-stages:
+  - module: exec
+    inputs:
+      - locale-gen
+      - dracut --force --regenerate-all --no-hostonly --verbose
+
+override:
+  - path: /var/lib/dpkg
+    keep: new
+    immutable: true
+
+  - path: /var/lib/apt
+    keep: new
+
+  - path: /etc/apt/sources.list
+    keep: new
+    immutable: true
+
+  - path: /etc/apt/sources.list.d
+    keep: new
+    immutable: true
+
+env:
+  BASE_IMAGE_NAME: docker://ghcr.io/rudraswat/ubuntu-rolling-nogui:main
+  BASE_AKSHARA_REPO: "https://git.blendos.co/blendOS/system-tools/akshara"
+  BASE_AKSHARA_REPO_BRANCH: "v5"
+  BASE_AKSHARA_REPO_COMMIT: "ccc81b9a5eeedba72b35c51aed3140f69f821928"

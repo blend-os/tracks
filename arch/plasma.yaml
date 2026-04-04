@@ -1,0 +1,16 @@
+track: "https://git.blendos.co/blendOS/tracks/-/raw/v5/arch/base.yaml"
+
+stages:
+  - module: pacman-install
+    inputs:
+      - sddm
+      - plasma
+      - kde-accessibility-meta
+      - kde-multimedia-meta
+      - kde-system-meta
+      - kde-utilities-meta
+      - discover
+
+  - module: systemctl-enable
+    inputs:
+      - sddm

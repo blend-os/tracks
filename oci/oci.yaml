@@ -1,0 +1,51 @@
+track: "base"
+
+modules:
+  - name: exec
+    run: |
+      for cmd in "$@"; do
+        bash -s <<< "$cmd"
+      done
+
+needs-update:
+  - |
+    [[ "$(cat /usr/revision)" != "$(skopeo inspect "$IMAGE_NAME" | jq '.Labels."org.opencontainers.image.revision" // "none"' -Mcrj)" ]]
+
+auto-update:
+  enabled: true
+  interval: 3600
+
+distro-config:
+  initialise: |
+    set -e
+
+    mkdir -p ./var/cache/blendOS/container/blobs
+
+    if [[ -z "$IMAGE_NAME" ]]; then
+      echo "E: no image name specified"
+      echo "I: (define IMAGE_NAME in env section)"
+      exit 1
+    fi
+
+    skopeo copy "$IMAGE_NAME" --dest-shared-blob-dir=./var/cache/blendOS/blobs oci:image:main
+    rm -rf image/blobs
+    ln -s ./var/cache/blendOS/blobs image/blobs
+    umoci unpack --image image:main bundle
+    rm image/blobs
+
+    cp -ax bundle/"$(jq '.root.path // "rootfs"' -Mcrj bundle/config.json)"/* .
+    jq '.annotations."org.opencontainers.image.revision" // empty' -Mcrj bundle/config.json > ./usr/revision
+    rm -rf bundle
+
+    ln -sfn usr/lib64 ./lib64
+    ln -sfn usr/sbin ./sbin
+
+    cp /etc/locale.gen ./etc
+    cp /etc/locale.conf ./etc
+
+env:
+  BASE_IMAGE_NAME: ""
+
+boot:
+  type: uefi
+  loader: grub
