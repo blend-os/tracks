@@ -27,7 +27,7 @@ distro-config:
       exit 1
     fi
 
-    rm -f ./var/cache/blendOS/container/image/blobs
+    rm -f ./var/cache/blendOS/container/image/blobs 2>/dev/null || rm -rf ./var/cache/blendOS/container/image/blobs
     rm -rf ./var/cache/blendOS/container/image
     skopeo copy "$BASE_IMAGE_NAME" --dest-shared-blob-dir=./var/cache/blendOS/container/blobs oci:./var/cache/blendOS/container/image:main
     rm -rf ./var/cache/blendOS/container/image/blobs
