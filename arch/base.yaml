@@ -35,6 +35,7 @@ stages:
       - "dracut"
       - "efibootmgr"
       - "distrobox"
+      - "podman"
       - "skopeo"
       - "umoci"
       - "flatpak"
