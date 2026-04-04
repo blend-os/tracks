@@ -29,6 +29,7 @@ stages:
       - "jq"
       - "git"
       - "sudo"
+      - "less"
       - "grub"
       - "nano"
       - "dracut"
@@ -81,7 +82,7 @@ stages:
         EOF
 
       - |
-        git clone --single-branch --branch "$BASE_AKSHARA_REPO_BRANCH" --revision "$BASE_AKSHARA_REPO_COMMIT" --depth 1 "$BASE_AKSHARA_REPO" /akshara
+        git clone --revision "$BASE_AKSHARA_REPO_COMMIT" --depth 1 "$BASE_AKSHARA_REPO" /akshara
         cp -a /akshara/usr/* /usr
         rm -rf /akshara
 
@@ -190,7 +191,6 @@ env:
   BASE_USE_IWD: "y"
   BASE_NVIDIA: "none"
   BASE_AKSHARA_REPO: "https://git.blendos.co/blendOS/system-tools/akshara"
-  BASE_AKSHARA_REPO_BRANCH: "v5"
   BASE_AKSHARA_REPO_COMMIT: "13e363a9e91de225705e30b46816703429dcb4dc"
 
 boot:
