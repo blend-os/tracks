@@ -27,12 +27,13 @@ distro-config:
       exit 1
     fi
 
+    rm -f ./var/cache/blendOS/container/image/blobs
     rm -rf ./var/cache/blendOS/container/image
     skopeo copy "$BASE_IMAGE_NAME" --dest-shared-blob-dir=./var/cache/blendOS/container/blobs oci:./var/cache/blendOS/container/image:main
     rm -rf ./var/cache/blendOS/container/image/blobs
     ln -s ../blobs ./var/cache/blendOS/container/image/blobs
     umoci unpack --image ./var/cache/blendOS/container/image:main bundle
-    rm ./var/cache/blendOS/container/image/blobs
+    rm -f ./var/cache/blendOS/container/image/blobs
     rm -rf ./var/cache/blendOS/container/image
 
     cp -ax bundle/"$(jq '.root.path // "rootfs"' -Mcrj bundle/config.json)"/* .
