@@ -9,7 +9,7 @@ modules:
 
 needs-update:
   - |
-    [[ "$(cat /usr/revision)" != "$(skopeo inspect "$IMAGE_NAME" | jq '.Labels."org.opencontainers.image.revision" // "none"' -Mcrj)" ]]
+    [[ "$(cat /usr/revision)" != "$(skopeo inspect "$BASE_IMAGE_NAME" | jq '.Labels."org.opencontainers.image.revision" // "none"' -Mcrj)" ]]
 
 auto-update:
   enabled: true
@@ -21,13 +21,13 @@ distro-config:
 
     mkdir -p ./var/cache/blendOS/container/blobs
 
-    if [[ -z "$IMAGE_NAME" ]]; then
-      echo "E: no image name specified"
-      echo "I: (define IMAGE_NAME in env section)"
+    if [[ -z "$BASE_IMAGE_NAME" ]]; then
+      echo "E: no OCI image name specified"
+      echo "I: (define BASE_IMAGE_NAME in env section)"
       exit 1
     fi
 
-    skopeo copy "$IMAGE_NAME" --dest-shared-blob-dir=./var/cache/blendOS/blobs oci:image:main
+    skopeo copy "$BASE_IMAGE_NAME" --dest-shared-blob-dir=./var/cache/blendOS/blobs oci:image:main
     rm -rf image/blobs
     ln -s ./var/cache/blendOS/blobs image/blobs
     umoci unpack --image image:main bundle
