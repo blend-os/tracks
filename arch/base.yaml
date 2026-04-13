@@ -192,7 +192,7 @@ env:
   BASE_USE_IWD: "y"
   BASE_NVIDIA: "none"
   BASE_AKSHARA_REPO: "https://git.blendos.co/blendOS/system-tools/akshara"
-  BASE_AKSHARA_REPO_COMMIT: "0e056f8f60fcce5689d6c455176179ebc4c0382a"
+  BASE_AKSHARA_REPO_COMMIT: "fa6fe5a39f7f9a72c36122dc05fb31917a2ac7e5"
 
 boot:
   type: uefi
